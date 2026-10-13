@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - Tournament Hub</title>
+
+    <meta name="theme-color" content="#080a12" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="~/css/theme.css"
+          asp-append-version="true" />
+</head>
+
+<body class="app-shell">
+
+    <!-- Шапка сайта -->
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-game">
+            <div class="container">
+
+                <a class="navbar-brand brand-lockup"
+                   asp-controller="Home"
+                   asp-action="Index"
+                   aria-label="Tournament Hub — главная">
+
+                    <span class="brand-mark" aria-hidden="true">TH</span>
+
+                    <span class="brand-text">
+                        <span class="brand-name">Tournament <strong>Hub</strong></span>
+                        <span class="brand-caption">NEON ESPORTS NETWORK</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#mainNav"
+                        aria-controls="mainNav"
+                        aria-expanded="false"
+                        aria-label="Переключить навигацию">
+
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+
+                    <ul class="navbar-nav ms-lg-auto me-lg-4 mb-3 mb-lg-0">
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : string.Empty)"
+                               asp-controller="Home"
+                               asp-action="Index">
+                                Главная
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Players" && ViewContext.RouteData.Values["action"]?.ToString() != "Top" ? "active" : string.Empty)"
+                               asp-controller="Players"
+                               asp-action="Index">
+                                Игроки
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Players" && ViewContext.RouteData.Values["action"]?.ToString() == "Top" ? "active" : string.Empty)"
+                               asp-controller="Players"
+                               asp-action="Top">
+                                Топ-3
+                            </a>
+                        </li>
+
+                    </ul>
+
+                    <a class="btn btn-nav-cta"
+                       asp-controller="Players"
+                       asp-action="Create">
+
+                        <span class="btn-nav-cta__plus" aria-hidden="true">+</span>
+                        Новый игрок
+                    </a>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main class="container app-main py-4 py-lg-5">
+
+        @if (TempData["SuccessMessage"] is string message)
+        {
+            <div class="alert alert-success site-alert alert-dismissible fade show"
+                 role="alert">
+
+                <span class="site-alert__icon" aria-hidden="true">✓</span>
+
+                <div class="site-alert__content">
+                    @message
+                </div>
+
+                <button type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                        aria-label="Закрыть">
+                </button>
+            </div>
+        }
+
+        @RenderBody()
+
+    </main>
+
+    <!-- Подвал -->
+    <footer class="site-footer">
+        <div class="container site-footer__inner">
+
+            <div class="site-footer__brand">
+                <span class="site-footer__mark" aria-hidden="true">TH</span>
+
+                <div>
+                    <div class="site-footer__title">Tournament Hub</div>
+                    <div class="site-footer__subtitle">WT-4 · NEON COMPETITIVE NETWORK</div>
+                </div>
+            </div>
+
+            <div class="site-footer__note">
+                ИГРОВОЙ СЕРВИС <span aria-hidden="true">//</span> ТУРНИРЫ
+            </div>
+
+            <div class="site-footer__author">
+                denisenko
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Скрипты -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>

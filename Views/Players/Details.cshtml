@@ -1,0 +1,67 @@
+@model Player
+@{
+    ViewData["Title"] = "Игрок " + Model.Nickname;
+}
+
+<div class="d-flex flex-column flex-md-row justify-content-between gap-3 mb-4">
+    <div>
+        <div class="page-eyebrow">PLAYER PROFILE / ID @Model.Id</div>
+        <h1 class="page-title mb-2">@Model.Nickname</h1>
+        <p class="text-secondary mb-0">Подробная информация об участнике</p>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-secondary" asp-action="Edit" asp-route-id="@Model.Id">Изменить</a>
+        <a class="btn btn-primary" asp-action="Index">К списку</a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-8">
+        <div class="card profile-panel h-100">
+            <div class="card-body p-4 p-lg-5">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="detail-label">Никнейм</div>
+                        <div class="detail-value">@Model.Nickname</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-label">Игра</div>
+                        <div class="detail-value">@Model.Game</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-label">Рейтинг</div>
+                        <div class="detail-value">@Model.Rating ELO</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-label">Winrate</div>
+                        <div class="detail-value">@Model.WinRate.ToString("F1")%</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-label">Победы</div>
+                        <div class="detail-value">@Model.Wins</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="detail-label">Поражения</div>
+                        <div class="detail-value">@Model.Losses</div>
+                    </div>
+                    <div class="col-12">
+                        <div class="detail-label">Дата регистрации</div>
+                        <div class="detail-value">@Model.CreatedAt.ToString("dd.MM.yyyy HH:mm")</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card profile-route-card h-100 bg-dark text-white">
+            <div class="card-body p-4">
+                <span class="badge text-bg-light text-dark rounded-pill mb-3">MVC</span>
+                <h2 class="h4 fw-bold">Маршрут страницы</h2>
+                <p class="text-white-50">/Players/Details/@Model.Id</p>
+                <hr class="border-secondary" />
+                <div class="small text-white-50">Routing → Controller → Model → Razor View → HTML</div>
+            </div>
+        </div>
+    </div>
+</div>

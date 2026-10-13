@@ -1,0 +1,79 @@
+@model List<Player>
+@{
+    ViewData["Title"] = "Игроки";
+    string? search = ViewBag.Search as string;
+    string? selectedGame = ViewBag.Game as string;
+    List<string> games = ViewBag.Games as List<string> ?? new List<string>();
+}
+
+<div class="d-flex flex-column flex-lg-row justify-content-between align-items-lg-end gap-3 mb-4">
+    <div>
+        <div class="page-eyebrow">PLAYER DATABASE / 01</div>
+        <h1 class="page-title mb-2">Игроки</h1>
+        <p class="mb-0">В сети сейчас отображается: <strong class="text-white">@Model.Count</strong> профилей</p>
+    </div>
+    <a class="btn btn-primary" asp-action="Create">+ Добавить игрока</a>
+</div>
+
+<div class="card search-panel mb-4">
+    <div class="card-body p-3 p-lg-4">
+        <form asp-action="Index" method="get" class="row g-2 align-items-end">
+            <div class="col-12 col-lg-5">
+                <label for="search" class="form-label">Поиск по никнейму</label>
+                <input id="search" name="search" value="@search" class="form-control" placeholder="Например, CyberWolf" />
+            </div>
+            <div class="col-12 col-lg-4">
+                <label for="game" class="form-label">Игра</label>
+                <select id="game" name="game" class="form-select">
+                    <option value="">Все игры</option>
+                    @foreach (string item in games)
+                    {
+                        <option value="@item" selected="@(string.Equals(item, selectedGame, StringComparison.OrdinalIgnoreCase) ? "selected" : null)">@item</option>
+                    }
+                </select>
+            </div>
+            <div class="col-12 col-lg-3 d-flex gap-2">
+                <button class="btn btn-primary flex-grow-1" type="submit">Найти</button>
+                <a class="btn btn-outline-secondary" asp-action="Index">Сброс</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning text-center py-4">Игроки по заданным условиям не найдены. Измени параметры поиска или добавь нового участника.</div>
+}
+else
+{
+    <div class="row g-4">
+        @foreach (Player player in Model)
+        {
+            <div class="col-12 col-md-6 col-xl-4">
+                <div class="card player-card h-100 border-0 shadow-sm rounded-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <span class="badge text-bg-secondary rounded-pill">ID: @player.Id</span>
+                            <span class="badge @(player.Rating >= 1800 ? "text-bg-success" : "text-bg-light")">@player.Rating ELO</span>
+                        </div>
+                        <h2 class="h4 fw-bold mb-1">@player.Nickname</h2>
+                        <p class="text-secondary mb-3">@player.Game</p>
+                        <div class="row g-2 small mb-4">
+                            <div class="col-4"><div class="stat-box rounded-3"><strong>@player.Wins</strong><span>Победы</span></div></div>
+                            <div class="col-4"><div class="stat-box rounded-3"><strong>@player.Losses</strong><span>Поражения</span></div></div>
+                            <div class="col-4"><div class="stat-box rounded-3"><strong>@player.WinRate.ToString("F0")%</strong><span>Winrate</span></div></div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a class="btn btn-primary btn-sm" asp-action="Details" asp-route-id="@player.Id">Подробнее</a>
+                            <a class="btn btn-outline-secondary btn-sm" asp-action="Edit" asp-route-id="@player.Id">Изменить</a>
+                            <form asp-action="Delete" asp-route-id="@player.Id" method="post" class="d-inline" onsubmit="return confirmDelete('@player.Nickname');">
+                                @Html.AntiForgeryToken()
+                                <button class="btn btn-outline-danger btn-sm" type="submit">Удалить</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

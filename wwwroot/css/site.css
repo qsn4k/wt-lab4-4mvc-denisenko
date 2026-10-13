@@ -1,0 +1,18 @@
+/* Tournament Hub — базовые стили и fallback без темы */
+html { min-height: 100%; }
+body {
+    min-height: 100vh;
+    margin: 0;
+    color: #f0f5ff;
+    background-color: #080a12;
+    font-family: "Rajdhani", "Segoe UI", Arial, sans-serif;
+}
+a { text-decoration: none; }
+img { max-width: 100%; }
+button, input, select, textarea { font: inherit; }
+.navbar-game { color: #fff; background-color: #080a12; }
+.hero-image { display: block; width: 100%; max-height: 340px; object-fit: contain; }
+:focus-visible { outline: 2px solid #59fff0; outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+}

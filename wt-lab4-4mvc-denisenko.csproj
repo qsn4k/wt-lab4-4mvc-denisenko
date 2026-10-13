@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>wt_lab4_4mvc_denisenko</RootNamespace>
+    <AssemblyName>wt-lab4-4mvc-denisenko</AssemblyName>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,41 @@
+@model List<Player>
+@{
+    ViewData["Title"] = "Топ-3 игроков";
+}
+
+<div class="text-center mb-5">
+    <div class="page-eyebrow justify-content-center">HALL OF FAME / LEADERBOARD</div>
+    <h1 class="page-title display-6">Таблица легенд</h1>
+    <p class="mb-0">Три игрока с самым высоким рейтингом ELO.</p>
+</div>
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-warning text-center">Рейтинг пока пуст. Добавь первого игрока, чтобы запустить таблицу лидеров.</div>
+}
+else
+{
+    <div class="row g-4 justify-content-center">
+        @for (int index = 0; index < Model.Count; index++)
+        {
+            Player player = Model[index];
+            <div class="col-md-6 col-xl-4">
+                <div class="card top-card h-100 text-center">
+                    <div class="card-body p-4 p-lg-5">
+                        <div class="badge text-bg-dark rounded-pill mb-3">@(index == 0 ? "#01 / ELITE" : $"#{index + 1:00} / TOP RANK")</div>
+                        <div class="rank-number mx-auto mb-4">@(index + 1)</div>
+                        <h2 class="h4 fw-bold">@player.Nickname</h2>
+                        <p class="mb-4">@player.Game</p>
+                        <div class="display-6 mb-1">@player.Rating</div>
+                        <div class="small text-secondary mb-4">РЕЙТИНГ ELO</div>
+                        <div class="row g-2 mb-4">
+                            <div class="col-6"><div class="stat-box"><strong>@player.Wins</strong><span>Победы</span></div></div>
+                            <div class="col-6"><div class="stat-box"><strong>@player.WinRate.ToString("F0")%</strong><span>Winrate</span></div></div>
+                        </div>
+                        <a class="btn btn-outline-primary w-100" asp-action="Details" asp-route-id="@player.Id">Открыть профиль ↗</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}

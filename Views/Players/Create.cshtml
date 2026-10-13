@@ -1,0 +1,58 @@
+@model Player
+@{
+    ViewData["Title"] = "Добавление игрока";
+}
+
+<div class="row justify-content-center">
+    <div class="col-xl-8">
+        <div class="card form-panel">
+            <div class="card-body p-4 p-lg-5">
+                <div class="page-eyebrow">REGISTER NEW PLAYER / 02</div>
+                <h1 class="page-title mb-2">Добавление игрока</h1>
+                <p class="text-secondary mb-4">Заполните форму для добавления нового участника игрового сервиса.</p>
+
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label asp-for="Nickname" class="form-label"></label>
+                            <input asp-for="Nickname" class="form-control form-control-lg" placeholder="Например, FrostByte" />
+                            <span asp-validation-for="Nickname" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="Game" class="form-label"></label>
+                            <input asp-for="Game" class="form-control form-control-lg" placeholder="Например, Counter-Strike 2" />
+                            <span asp-validation-for="Game" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Rating" class="form-label"></label>
+                            <input asp-for="Rating" class="form-control" type="number" min="0" max="5000" />
+                            <span asp-validation-for="Rating" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Wins" class="form-label"></label>
+                            <input asp-for="Wins" class="form-control" type="number" min="0" />
+                            <span asp-validation-for="Wins" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="Losses" class="form-label"></label>
+                            <input asp-for="Losses" class="form-control" type="number" min="0" />
+                            <span asp-validation-for="Losses" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <button class="btn btn-primary btn-lg" type="submit">Сохранить игрока</button>
+                        <a class="btn btn-outline-secondary btn-lg" asp-action="Index">Назад</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

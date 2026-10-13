@@ -1,0 +1,20 @@
+## Visual Studio / .NET
+.vs/
+*.user
+*.suo
+bin/
+obj/
+Debug/
+Release/
+TestResults/
+*.userosscache
+*.sln.docstates
+
+## Rider / ReSharper
+.idea/
+_ReSharper*/
+*.DotSettings.user
+
+## OS
+.DS_Store
+Thumbs.db
