@@ -23,7 +23,7 @@ dotnet run
 
 ## GitHub
 
-[Добавить ссылку на GitHub-репозиторий]
+[https://github.com/qsn4k/wt-lab4-4mvc-denisenko]
 
 ## Опубликованное приложение
 
