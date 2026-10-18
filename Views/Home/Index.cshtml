@@ -1,82 +1,119 @@
-@{
-    ViewData["Title"] = "Главная";
-}
+<!-- MAIN DEVELOPER / CREATOR PROFILE -->
+<section class="developer-section mt-5 mb-5"
+         aria-labelledby="developer-title">
 
-<section class="hero-card cyber-hero">
-    <div class="row g-0 align-items-center">
-        <div class="col-lg-7 cyber-hero__content">
-            <div class="cyber-hero__copy">
-                <div class="cyber-status"><span class="cyber-status__dot" aria-hidden="true"></span> SYSTEM ONLINE / SECTOR 07</div>
-                <div class="eyebrow">NEON ESPORTS NETWORK</div>
-                <h1 class="cyber-title">
-                    Играй.<br />
-                    <span class="title-cyan">Побеждай.</span><br />
-                    <span class="title-magenta">Стань легендой.</span>
-                </h1>
-                <p class="cyber-hero__description">
-                    Твоя игра. Твои правила. Твой рейтинг. Управляй составом, следи за результатами и поднимайся на вершину киберспортивной таблицы.
+    <div class="developer-panel">
+        <div class="developer-panel__header">
+            <div>
+                <div class="page-eyebrow">CREATOR DATABASE // 001</div>
+                <p class="developer-panel__subtitle mb-0">
+                    ИДЕНТИФИКАЦИЯ РАЗРАБОТЧИКА
                 </p>
-                <div class="cyber-hero__actions">
-                    <a class="btn btn-primary btn-lg" asp-controller="Players" asp-action="Index">Открыть игроков <span aria-hidden="true">↗</span></a>
-                    <a class="btn btn-outline-secondary btn-lg" asp-controller="Players" asp-action="Top">Рейтинг бойцов</a>
+            </div>
+
+            <div class="developer-status">
+                <span class="developer-status__dot"
+                      aria-hidden="true"></span>
+                SYSTEM ARCHITECT
+            </div>
+        </div>
+
+        <div class="row align-items-center g-4 mt-2">
+            <div class="col-lg-7">
+                <div class="developer-kicker">
+                    PLAYER PROFILE / MAIN DEVELOPER
                 </div>
-                <div class="hero-stats" aria-label="Возможности платформы">
-                    <div class="hero-stat"><strong>01 / CORE</strong><span>Управление игроками</span></div>
-                    <div class="hero-stat"><strong>02 / RANK</strong><span>Рейтинг ELO</span></div>
-                    <div class="hero-stat"><strong>03 / LIVE</strong><span>Турнирная статистика</span></div>
+
+                <h2 id="developer-title" class="developer-title">
+                    ДЕНИСЕНКО
+                    <span>ДАНИИЛ</span>
+                </h2>
+
+                <p class="developer-role">
+                    Главный разработчик
+                    <span class="developer-role__separator">//</span>
+                    Tournament Hub
+                </p>
+
+                <p class="developer-description">
+                    Создатель игровой платформы для управления
+                    киберспортивными участниками. Объединяет разработку
+                    веб-приложений, работу с данными и визуальный стиль,
+                    в котором технологии выглядят так же эффектно,
+                    как финальный раунд чемпионата.
+                </p>
+
+                <div class="developer-tags"
+                     aria-label="Технологии и направления проекта">
+                    <span>ASP.NET CORE MVC</span>
+                    <span>RAZOR / C#</span>
+                    <span>UI DESIGN</span>
+                    <span>AI & CYBERSECURITY</span>
+                </div>
+
+                <div class="developer-quote">
+                    <span class="developer-quote__symbol">///</span>
+                    <p>
+                        Не просто написать код.
+                        Создать систему, в которой хочется побеждать.
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="developer-console">
+                    <div class="developer-console__top">
+                        <span>DEVELOPER_PROFILE.exe</span>
+                        <span class="developer-console__live">
+                            ● ONLINE
+                        </span>
+                    </div>
+
+                    <div class="developer-console__avatar"
+                         aria-hidden="true">
+                        <span>DD</span>
+                    </div>
+
+                    <div class="developer-console__name">
+                        DENISENKO_DANIIL
+                    </div>
+
+                    <div class="developer-console__divider"></div>
+
+                    <div class="developer-console__row">
+                        <span>ACCESS LEVEL</span>
+                        <strong>DEVELOPER</strong>
+                    </div>
+
+                    <div class="developer-console__row">
+                        <span>ACTIVE PROJECT</span>
+                        <strong>TOURNAMENT HUB</strong>
+                    </div>
+
+                    <div class="developer-console__row">
+                        <span>PRIMARY STACK</span>
+                        <strong>ASP.NET CORE</strong>
+                    </div>
+
+                    <div class="developer-console__row">
+                        <span>DESIGN MODE</span>
+                        <strong class="text-magenta">
+                            CYBERPUNK
+                        </strong>
+                    </div>
+
+                    <div class="developer-console__footer">
+                        <span>PROFILE LOADED</span>
+                        <span>END OF TRANSMISSION_</span>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-5 cyber-hero__visual">
-            <div class="hero-visual-ring" aria-hidden="true"></div>
-            <img src="~/images/tournament.svg" class="img-fluid hero-image" alt="Неоновая эмблема киберспортивного турнира" />
-            <div class="hero-float-label">RANKING SYSTEM // ACTIVE</div>
+
+        <div class="developer-panel__bottom">
+            <span>TOURNAMENT HUB</span>
+            <span>BUILT WITH CODE. POWERED BY IDEAS.</span>
+            <span>© 2026</span>
         </div>
     </div>
 </section>
-
-<div class="d-flex flex-column flex-md-row align-items-md-end justify-content-between gap-2 mb-4">
-    <div>
-        <div class="page-eyebrow">PLATFORM MODULES</div>
-        <h2 class="page-title mb-1">Твой арсенал</h2>
-    </div>
-    <p class="mb-1">Всё необходимое для управления киберспортивной лигой.</p>
-</div>
-
-<div class="row g-4">
-    <div class="col-md-4">
-        <div class="feature-card card h-100">
-            <div class="card-body">
-                <div class="feature-icon mb-3" aria-hidden="true">01</div>
-                <h2 class="h5 fw-bold">Центр игроков</h2>
-                <p class="mb-0">Добавляй участников, редактируй профили и быстро находи нужного бойца в общей базе.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="feature-card card h-100">
-            <div class="card-body">
-                <div class="feature-icon mb-3" aria-hidden="true">02</div>
-                <h2 class="h5 fw-bold">Статистика матчей</h2>
-                <p class="mb-0">Победы, поражения и процент успешных матчей — вся статистика в одном интерфейсе.</p>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="feature-card card h-100">
-            <div class="card-body">
-                <div class="feature-icon mb-3" aria-hidden="true">03</div>
-                <h2 class="h5 fw-bold">Таблица лидеров</h2>
-                <p class="mb-0">Сравнивай рейтинги ELO и проверяй, кто сейчас занимает верхние позиции.</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mt-5 pt-3">
-    <div>
-        <div class="page-eyebrow">READY PLAYER ONE?</div>
-        <h2 class="h4 mb-1">Следующий уровень начинается здесь.</h2>
-    </div>
-    <a class="btn btn-outline-primary" asp-controller="Players" asp-action="Create">+ Зарегистрировать игрока</a>
-</div>
