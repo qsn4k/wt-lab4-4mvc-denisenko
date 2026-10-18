@@ -27,4 +27,4 @@ dotnet run
 
 ## Опубликованное приложение
 
-[Добавить публичный URL Render]
+[https://wt-lab4-4mvc-denisenko.onrender.com/]
